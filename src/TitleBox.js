@@ -1,13 +1,12 @@
 import React from 'react';
 
 const TitleBox = (props) => {
-    console.log(props);
     const titleArray = props.data.map((d,i) => {
         return (
             <div>
-                <a href="" onClick={() => {
+                <p onClick={() => {
                     props.handleClick(i);
-                    }}>{d.title}</a>
+                    }}>{d.title}</p>
             </div>);
         })
     return (
