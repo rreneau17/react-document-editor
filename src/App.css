@@ -26,3 +26,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.title-styles {
+  border: 5px;
+  border-color: black;
+}
