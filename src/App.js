@@ -4,6 +4,7 @@ import './App.css';
 
 import TextBox from './TextBox';
 import TitleBox from './TitleBox';
+import SelectTitle from './SelectTitle';
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +31,23 @@ class App extends Component {
     console.log(this.state.titleNum);
     return (
         <div className="container">
-          <TitleBox data={this.state.data} handleClick={this._setTitleNum} />
+          <TitleBox data={this.state.data} changeHandler={this._setNewTitle} handleClick={this._setTitleNum} />
           <TextBox document={this.state.data[this.state.titleNum]} changeHandler={this._setNewText} />
         </div>
       );
+  }
+
+  _setNewTitle = (newTitle) => {
+    const newTitleArray = this.state.data.map((doc, i) => {
+      if(i === this.state.titleNum) {
+        return {
+          title: newTitle,
+          content: doc.content
+        }
+      } else {
+        return doc;
+      }
+    });
   }
 
   _setNewText = (newText) => {
@@ -42,7 +56,7 @@ class App extends Component {
           return {
             title: doc.title,
             content: newText
-          }
+          } 
         } else {
           return doc;
         }
@@ -59,6 +73,6 @@ class App extends Component {
       titleNum: num
     });  
   }
-}
+};
 
 export default App;
